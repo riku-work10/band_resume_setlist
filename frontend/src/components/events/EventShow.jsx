@@ -120,8 +120,19 @@ const EventShow = () => {
           />
         )}
         <SetlistList event={event}/>
-        <button onClick={handleClickForm}>セトリ作成</button>
-        <button onClick={handleClickEditForm}>セトリ編集</button>
+        {event.setlists && event.setlists.length > 0 ? (
+        <button
+          onClick={handleClickEditForm}
+          className="py-2 px-4 bg-yellow-500 text-white rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          セトリ編集
+        </button>
+      ) : (
+        <button
+          onClick={handleClickForm}
+          className="py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          セトリ作成
+        </button>
+      )}
         <EventComments eventId={eventId}/>
     </div>
   );

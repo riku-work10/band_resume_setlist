@@ -87,23 +87,13 @@ const SetlistEditForm = () => {
       <h2>本番曲</h2>
       {songs.map((song, index) => (
         <div key={index}>
-          <label>曲名 {song.order}</label>
+          <label>曲名</label>
           <input
             type="text"
             name="title"
             value={song.title}
             onChange={(e) => handleSongChange(index, e)}
-            placeholder={`曲名 ${song.order}`}
           />
-          <div>
-            <label>順番</label>
-            <input
-              type="number"
-              name="order"
-              value={song.order}
-              onChange={(e) => handleSongChange(index, e)}
-            />
-          </div>
         </div>
       ))}
       <button type="button" onClick={addSong}>本番曲を追加</button>
@@ -112,23 +102,13 @@ const SetlistEditForm = () => {
       <h2>アンコール曲</h2>
       {encoreSongs.map((encoreSong, index) => (
         <div key={index}>
-          <label>アンコール曲名 {index + 1}</label>
+          <label>アンコール曲名</label>
           <input
             type="text"
             name="title"
             value={encoreSong.title}
             onChange={(e) => handleEncoreChange(index, e)}
-            placeholder={`アンコール曲名 ${index + 1}`}
           />
-          <div>
-            <label>順番</label>
-            <input
-              type="number"
-              name="order"
-              value={String(encoreSong.order).replace(/^En-/, "")}
-              onChange={(e) => handleEncoreChange(index, e)}
-            />
-          </div>
         </div>
       ))}
       <button type="button" onClick={addEncoreSong}>アンコール曲を追加</button>

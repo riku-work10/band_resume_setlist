@@ -68,26 +68,16 @@ const SetlistForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       {/* 曲の入力フォーム */}
+      <h1>本番曲</h1>
       {songs.map((song, index) => (
         <div key={index}>
-          <h1>本番曲</h1>
-          <label>曲名 {song.order}</label>
+          <label>曲名</label>
           <input
             type="text"
             name="title"
             value={song.title}
             onChange={(e) => handleSongChange(index, e)}
-            placeholder={`曲名 ${song.order}`}
           />
-          <div>
-            <label>順番</label>
-            <input
-              type="number"
-              name="order"
-              value={song.order}
-              onChange={(e) => handleSongChange(index, e)}
-            />
-          </div>
         </div>
       ))}
       <button type="button" onClick={addSong}>
@@ -100,21 +90,11 @@ const SetlistForm = () => {
         {encoreSongs.map((encoreSong, index) => (
           <div key={index}>
             <div>
-              <label>アンコール曲名 {index + 1}</label>
+              <label>アンコール曲名</label>
               <input
                 type="text"
                 name="title"
                 value={encoreSong.title}
-                onChange={(e) => handleEncoreChange(index, e)}
-                placeholder={`アンコール曲名 ${index + 1}`}
-              />
-            </div>
-            <div>
-              <label>順番</label>
-              <input
-                type="number"
-                name="order"
-                value={encoreSong.order}
                 onChange={(e) => handleEncoreChange(index, e)}
               />
             </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_28_053909) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_01_052542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,15 +96,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_28_053909) do
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
-  create_table "songs", force: :cascade do |t|
-    t.string "name", null: false
+  create_table "setlists", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.string "title"
+    t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_setlists_on_event_id"
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_done"
+  create_table "songs", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -146,4 +148,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_28_053909) do
   add_foreign_key "resume_likes", "users"
   add_foreign_key "resume_sections", "resumes"
   add_foreign_key "resumes", "users"
+  add_foreign_key "setlists", "events"
 end

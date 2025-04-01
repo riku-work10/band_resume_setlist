@@ -6,6 +6,7 @@ import { deleteEvent, getEvent } from '../../services/apiLives';
 import EventEdit from './EventEdit';
 import EventComments from '../comments/EventComments';
 import EventLikeButton from '../likes/EventLikeButton';
+import SetlistList from '../setlists/SetlistList';
 
 const EventShow = () => {
   const { eventId } = useParams();
@@ -48,6 +49,19 @@ const EventShow = () => {
     }
   };
 
+  //セトリ作成フォームへ
+  const handleClickForm = () => {
+    navigate("/setlistCreate", {
+      state: { eventId }
+    });
+  };
+
+    //セトリ編集フォームへ
+  const handleClickEditForm = () => {
+    navigate("/setlistEdit", {
+      state: { event }
+    });
+  };
   return (
     <div>
         {event ? (
@@ -105,6 +119,9 @@ const EventShow = () => {
             onUpdate={setEvent}
           />
         )}
+        <SetlistList event={event}/>
+        <button onClick={handleClickForm}>セトリ作成</button>
+        <button onClick={handleClickEditForm}>セトリ編集</button>
         <EventComments eventId={eventId}/>
     </div>
   );

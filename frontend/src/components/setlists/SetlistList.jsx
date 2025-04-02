@@ -1,5 +1,4 @@
 const SetlistList = ({event}) => {
-
   return (
     <div>
       <h2>セットリスト一覧</h2>

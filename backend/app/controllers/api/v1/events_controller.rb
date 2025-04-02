@@ -29,7 +29,7 @@ class Api::V1::EventsController < ApplicationController
     event = Event.find(params[:id])
     if event.update(event_params)
       update_tags(event, params[:tag_names])
-      render json: event, include: :tags, status: :ok
+      render json: event, include: [:tags, :setlists], status: :ok
     else
       render json: { errors: event.errors.full_messages }, status: :unprocessable_entity
     end
@@ -53,7 +53,7 @@ class Api::V1::EventsController < ApplicationController
     render json: liked_events
   end
 
-  # ✅ 特定のタグが付いているイベントを取得するカスタムメソッド
+  #特定のタグが付いているイベントを取得するカスタムメソッド
   def tagged_events
     tag = Tag.find_by(name: params[:tag_name])
     if tag

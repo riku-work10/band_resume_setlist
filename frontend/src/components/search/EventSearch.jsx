@@ -75,8 +75,6 @@ const EventSearch = ({ onSearch }) => {
         />
       </div>
 
-
-
       {/* タグフィルタ（プルダウン + チェックボックス） */}
       <div className="relative">
         <button
